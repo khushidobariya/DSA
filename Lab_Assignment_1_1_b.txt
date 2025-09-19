@@ -1,0 +1,29 @@
+Step 1: START 
+Step 2: Declare and initialize variables counto=0 for odd and counte=0 for even. (int counto=0,counte=0)
+Step 3: Declare an integer variable n for the number of integers in the array arr2. (int n)
+Step 4: Print "Enter the number of integers(<=100) in the array arr2:". (printf("Enter the number of integers(<=100) in array arr2:"))
+Step 5: Input the value of n. (scanf("%d",&n))
+Step 6: if n<=0:
+		Print "Empty array.". (printf("Empty array."))
+		Go to step 18.
+Step 7: Declare an integer array arr2[100]. (int arr2[100])
+Step 8: Declare and initialize an integer variable h=0. (int h=0)
+Step 9: Print "Input integer element at position h+1 in array arr2:". (printf("Enter element at position %d:",h+1))
+Step 10: Input integer at index h in array arr2. (scanf("%d",&arr2[h]))
+Step 11: h=h+1
+Step 12: if h<n:
+		Go to step 9.
+	else:
+		Go to step 13.
+Step 13: Declare and initialize an integer variable i=0. (int i=0)
+Step 14: if arr2[i]%2==0:
+		counte=counte+1
+	else:
+		counto=counto+1
+Step 15: i=i+1
+Step 16: if i<n:
+		Go to step 14.
+	else:
+		Go to step 17.
+Step 17: Print the values of variables counto and counte. (printf("Odd Count = %d\nEven Count = %d",counto,counte))
+Step 18: END

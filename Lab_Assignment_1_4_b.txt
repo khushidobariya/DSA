@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <conio.h>
+int max_profit(int a[],int n){
+    int min=a[0];
+    int maxp=0;
+    for(int i = 1; i < n; i++){
+        if(a[i] < min)
+            min = a[i];
+        else if(a[i]-min>maxp)
+            maxp=a[i]-min;
+    }
+    return maxp;
+}
+int main(){
+    clrscr();
+    int a[]={7, 1, 5, 3, 6, 4};
+    int n=sizeof(a)/sizeof(a[0]);
+    printf("%d\n",max_profit(a,n));
+    return 0;
+}

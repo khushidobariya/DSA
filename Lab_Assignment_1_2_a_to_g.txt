@@ -1,0 +1,7 @@
+a) O(n*n) (1 nested loop, therefore overall in total loops run n*n times)
+b) O(n)
+c) O(log n) (As i is getting doubled at every iteration)
+d) O(n*n*n) (3 nested loops, therefore overall in total loops run n*n*n times) 
+e) O(2^n)
+f) O(1) (No loops involved)
+g) O(n*n) 

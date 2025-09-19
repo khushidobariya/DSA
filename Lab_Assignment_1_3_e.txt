@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <conio.h>
+void main(){
+    clrscr();
+    int arr1[5],i,smallest;
+    for(i=0;i<=4;i++){
+        printf("Enter element %d: ",i+1);
+        scanf("%d",&arr1[i]);
+    }
+    smallest=arr1[0];
+    for(i=1;i<=4;i++){
+        if(arr1[i]<smallest)
+            smallest=arr1[i];
+    }
+printf("The smallest element of the array is %d.",smallest);
+}

@@ -1,0 +1,33 @@
+Step 1: START 
+Step 2: Declare an integer variable n for the number of integers(<=100) in array arr3. (int n)
+Step 3: Print "Enter the number of integers in array arr3:". (printf("Enter the number of integers in array arr3: "))
+Step 4: Input value for n. (scanf("%d",&n))
+Step 5: if n<=0:
+		Print "Empty array.". (printf("Empty array."))
+		Go to step 22.
+Step 6: Declare an integer array named arr3. (int arr3[100]) 
+Step 7: Declare and initialize an integer variable k=0. (int k=0)
+Step 8: Print "Enter element at position k+1 in the array arr3:". (printf("Enter element at position %d:",k+1))
+Step 9: Input value at index k in array arr3. (scanf("%d",&arr3[k]))
+Step 10: k=k+1
+Step 11: if k<=n-1:
+		Go to step 8.
+	else:
+		Go to step 12.
+Step 12: Declare an integer array named rev. (int rev[100])
+Step 13: Declare integer variables i=n-1 and j=0.
+Step 14: rev[j]=arr3[i]
+Step 15: j=j+1
+Step 16: i=i-1
+Step 17: if i>=0 and j<=n-1:
+		Go to step 14.
+	else:
+		Go to step 18.
+Step 18: Declare and initialize an integer variable h=0. (int h=0)
+Step 19: Print element at position h+1 of array rev. (printf("%d",rev[h]))
+Step 20: h=h+1
+Step 21: if h<=n-1:
+		Go to step 19.
+	 else:
+		Go to step 22.
+Step 22: END

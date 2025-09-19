@@ -1,0 +1,31 @@
+Step 1: START
+Step 2: Declare an integer variable n. (int n)
+Step 3: Print "Enter number of integers(<=100) in the array arr1:". (printf("Enter number of integers(<=100) in the array arr1:"))
+Step 4: Input the value of variable n. (scanf("%d",&n))
+Step 5: if n<=0:
+		Print "Empty array.". (printf("Empty array."))
+		Go to step 18.
+Step 6: Declare an integer array named arr1. (int arr1[100])
+Step 7: Declare and initialize an integer variable j=0. (int j=0)
+Step 8: Print "Enter the value at position j+1:". (printf("Enter element at position %d in arr1:",j+1))
+Step 9: Input value for element at index j. (scanf("%d",&arr1[j]))
+Step 10: j=j+1
+Step 11: if j<n:
+		Go to step 8.
+	 else:
+		Go to step 12.
+Step 12: Set variables max and min as first integer of the arr1. (max=arr1[0];min=arr1[0])
+Step 13: Declare and initialize an integer variable i=1. (int i=1)
+Step 14: if arr1[i]>max:
+		max=arr1[i]
+	 else if arr1[i]<min:
+		min=arr1[i]
+Step 15: i=i+1
+Step 16: if i<n:
+		Go to step 14.
+
+	else:
+		Go to step 17.
+Step 17: Print the values of variables max and min. (printf("Max = %d\nMin = %d",max,min))
+Step 18: END
+			

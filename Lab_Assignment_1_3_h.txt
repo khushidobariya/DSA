@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <conio.h>
+int linearsearch(int arr1[],int size,int ele);
+void main(){
+    clrscr();\
+    int size,arr1[50],ele,i,pos;
+    printf("Enter the number of elements in the array(<=50): ");
+    scanf("%d",&size);
+    for(i=0;i<size;i++){
+        printf("Enter element %d: ",i+1);
+        scanf("%d",&arr1[i]);
+    }
+    printf("Enter the element you want to find in the array: ");
+    scanf("%d",&ele);
+    pos=linearsearch(arr1,size,ele);
+    if(pos>0) printf("%d is at position %d in the array.",ele,pos);
+    else if(pos==0) printf("%d not found in the arrray.",ele);
+}
+int linearsearch(int arr1[],int size,int ele){
+    int ch=0;
+    for(int i=0;i<size;i++){
+        if(arr1[i]==ele){
+            ch=1;
+            return i+1;
+    }
+}
+return 0;
+}

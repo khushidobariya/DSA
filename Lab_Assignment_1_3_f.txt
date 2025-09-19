@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <conio.h>
+void main(){
+    clrscr();
+    int arr1[50],i,num,pos,ele;
+    printf("Enter the number of elements(<50):");
+    scanf("%d",&num);
+    for(i=0;i<num;i++){
+        printf("Enter element %d: ",i+1);
+        scanf("%d",&arr1[i]);
+    }
+    printf("Enter the position at which you want to insert an element:");
+    scanf("%d",&pos);
+    printf("Enter the element you want to insert:");
+    scanf("%d",&ele);
+    for(i=num;i>=pos-1;i--)
+        arr1[i+1]=arr1[i];
+    arr1[pos-1]=ele;
+    for(i=0;i<=num;i++)
+        printf("%d\n",arr1[i]);
+}
+    

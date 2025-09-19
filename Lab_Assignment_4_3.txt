@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+struct node{
+    int data;
+    struct node *next;
+    struct node *previous;
+};
+struct node *head=NULL;
+void createDLL(int n){
+    struct node *newNode,*temp;
+    int i;
+    for(i=0;i<n;i++){
+        newNode=(struct node*)malloc(sizeof(struct node));
+        printf("Enter data for node %d: ",i+1);
+        scanf("%d",&newNode->data);
+        newNode->previous=NULL;
+        newNode->next=NULL;
+        if(head==NULL)
+            head=newNode;
+        else{
+            temp=head;
+            while(temp->next!=NULL)
+                temp=temp->next;
+            temp->next=newNode;
+            newNode->previous=temp;
+        }
+    }
+}
+
+void deleteAtStart(){
+    struct node *temp;
+    if(head==NULL){
+        printf("List is empty.\n");
+        return;
+    }
+    temp=head;
+    head=head->next;
+    if(head!=NULL){
+        head->previous=NULL;
+    }
+    free(temp);
+}
+void deleteAtEnd(){
+    struct node *temp;
+    if(head==NULL){
+        printf("List is empty.\n");
+        return;
+    }
+    if(head->next==NULL){
+        free(head);
+        head=NULL;
+        return;
+    }
+    temp=head;
+    while(temp->next != NULL)
+        temp = temp->next;
+    temp->previous->next=NULL;
+    free(temp);
+}
+void deleteAtPos(int pos){
+    struct node *temp=head;
+    int i;
+    if(head==NULL){
+        printf("List is empty.\n");
+        return;
+    }
+    if (pos==1){
+        deleteAtStart();
+        return;
+    }
+    for(i=1;i<pos && temp!=NULL;i++)
+        temp=temp->next;
+    if(temp==NULL){
+        printf("Position out of range!\n");
+        return;
+    }
+    if(temp->next!=NULL)
+        temp->next->previous=temp->previous;
+    if(temp->previous!=NULL)
+        temp->previous->next=temp->next;
+    free(temp);
+}
+void displayDLL(){
+    if(head==NULL){
+        printf("List is empty.\n");
+        return;
+    }
+    struct node *curr=head;
+    while(curr!=NULL){
+        printf("%d ",curr->data);
+        curr=curr->next;
+    }
+    printf("\n");
+}
+int main(){
+    clrscr();
+    int n,pos;
+    printf("Enter number of nodes in Doubly Linked List: ");
+    scanf("%d",&n);
+    createDLL(n);
+    printf("Your given Doubly Linked List:\n");
+    displayDLL();
+    deleteAtStart();
+    printf("Doubly Linked List after deleting node at the start:\n");
+    displayDLL();
+    deleteAtEnd();
+    printf("Doubly Linked List after deleting node at the end:\n");
+    displayDLL();
+    printf("Enter position of the node to delete: ");
+    scanf("%d",&pos);
+    deleteAtPos(pos);
+    printf("Doubly Linked List after deleting node at position %d:\n",pos);
+    displayDLL();
+    return 0;
+}

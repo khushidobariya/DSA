@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+    struct node *previous;
+};
+struct node *head=NULL;
+void createDLL(int n){
+    struct node *newNode, *temp;
+    int i;
+    for(i=0;i<n;i++){
+        newNode=(struct node*)malloc(sizeof(struct node));
+        printf("Enter data for node %d: ",i+1);
+        scanf("%d",&newNode->data);
+        newNode->previous=NULL;
+        newNode->next=NULL;
+        if(head==NULL) 
+            head=newNode;
+        else{
+            temp=head;
+            while(temp->next!=NULL)
+                temp=temp->next;
+            temp->next=newNode;
+            newNode->previous=temp;
+        }
+    }
+}
+void insertAtStart(int val){
+    struct node *newNode=(struct node*)malloc(sizeof(struct node));
+    newNode->data=val;
+    newNode->previous=NULL;
+    newNode->next=head;
+    if(head!=NULL)
+        head->previous=newNode;
+    head=newNode;
+}
+void insertAtEnd(int val){
+    struct node *newNode=(struct node*)malloc(sizeof(struct node));
+    struct node *temp=head;
+    newNode->data=val;
+    newNode->next=NULL;
+    if(head==NULL){
+        newNode->previous=NULL;
+        head=newNode;
+        return;
+    }
+    while(temp->next!=NULL)
+        temp=temp->next;
+    temp->next=newNode;
+    newNode->previous=temp;
+}
+void insertAtPos(int val,int pos){
+    struct node *newNode,*temp=head;
+    int i;
+    if(pos==1){
+        insertAtStart(val);
+        return;
+    }
+    newNode=(struct node*)malloc(sizeof(struct node));
+    newNode->data=val;
+    for (i=1;i<pos-1 && temp!=NULL;i++)
+        temp=temp->next;
+    if (temp==NULL){
+        printf("Given position out of range.\n");
+        free(newNode);
+        return;
+    }
+    newNode->next=temp->next;
+    newNode->previous=temp;
+    if(temp->next!=NULL)
+        temp->next->previous=newNode;
+    temp->next = newNode;
+}
+void displayDLL(){
+    struct node *curr=head;
+    while(curr!=NULL){
+        printf("%d ",curr->data);
+        curr=curr->next;
+    }
+    printf("\n");
+}
+int main(){
+    clrscr();
+    int n, val, pos;
+    printf("Enter number of nodes in Doubly Linked List: ");
+    scanf("%d", &n);
+    createDLL(n);
+    printf("Your given Doubly Linked List is:\n");
+    displayDLL();
+    printf("Enter value to insert in the new node at the start: ");
+    scanf("%d",&val);
+    insertAtStart(val);
+    printf("Doubly Linked List after inserting new node at the start:\n");
+    displayDLL();
+    printf("Enter value to insert in the new node at the end: ");
+    scanf("%d",&val);
+    insertAtEnd(val);
+    printf("Doubly Linked List after inserting new node at the end:\n");
+    displayDLL();
+    printf("Enter position of the new node to be inserted: ");
+    scanf("%d",&pos);
+    printf("Enter value to insert in the new node at position %d: ",pos);
+    scanf("%d",&val);
+    insertAtPos(val,pos);
+    printf("Doubly Linked List after inserting new node at position %d:\n",pos);
+    displayDLL();
+    return 0;
+}

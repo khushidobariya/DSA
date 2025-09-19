@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <conio.h>
+void add_matrix(int arr[50][50],int arr2[50][50],int arr3[50][50],int,int);
+void print_matrix(int arr4[50][50]);
+void main(){
+    clrscr();
+    int rsize,csize,i,j,matrix1[50][50],matrix2[50][50],sum[50][50];
+    printf("Enter the number of rows(<=50): ");
+    scanf("%d",&rsize);
+    printf("Enter the number of columns(<=50):");
+    scanf("%d",&csize);
+    printf("Enter elements of matrix 1:");
+    for(i=0;i<rsize;i++){
+        for(j=0;j<csize;j++){
+            printf("Enter element at row %d and column %d: ",i,j);
+            scanf("%d",&matrix1[i][j]);
+        }
+    }
+    printf("Enter elements of matrix 2:");
+    for(i=0;i<rsize;i++){
+        for(j=0;j<csize;j++){
+            printf("Enter element at row %d and column %d: ",i,j);
+            scanf("%d",&matrix2[i][j]);
+        }
+    }
+    add_matrix(matrix1[50][50],matrix2[50][50],rsize,csize);
+    print_matrix(sum[50][50],rsize,csize);
+}
+void add_matrix(int matrix1[50][50],int matrix2[50][50],int sum[50][50],int rsize,int csize){
+    for(int i=0;i<rsize;i++){
+        for(int j=0;j<csize;j++){
+            sum[i][j]=matrix1[i][j]+matrix2[i][j];
+        }
+    }
+}
+void print_matrix(int sum[50][50],int rsize,int csize){
+    for(int i=0;i<rsize;i++){
+        for(int j=0;j<csize;j++){
+            printf("%d ",sum[i][j]);
+        }
+    }
+}
+    

@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <conio.h>
+void main(){
+    clrscr();
+    int matrix[50][50],t_matrix[50][50],i,j,rsize,csize;
+    printf("Enter the number of rows(<=50) in square matrix: ");
+    scanf("%d",&rsize);
+    printf("Enter the number of columns(<=50) in square matrix: ");
+    scanf("%d",&csize);
+    if(rsize==csize){
+        for(i=0;i<rsize;i++){
+            for(j=0;j<csize;j++){
+                printf("Enter the element at row %d and column %d: ",i+1,j+1);
+                scanf("%d",&matrix[i][j]);
+                t_matrix[j][i]=matrix[i][j];
+            }
+        }
+        printf("Your original matrix was:\n");
+        for(i=0;i<rsize;i++){
+            for(j=0;j<csize;j++){
+                printf("%-3d ",matrix[i][j]);
+            }
+            printf("\n");
+        }
+        printf("The transpose of your matrix is:\n");
+        for(i=0;i<rsize;i++){
+            for(j=0;j<csize;j++){
+                printf("%-3d ",t_matrix[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    else printf("Please enter number of rows and columns as equal(square matrix).");
+}
+    

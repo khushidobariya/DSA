@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <conio.h>
+void main(){
+    clrscr();
+    int i,j,h,smallest_i,smallest_j,largest_i,largest_j,matrix[50][50],rsize,csize,smallest,largest,ch=0;
+    printf("Enter the number of rows(<=50): ");
+    scanf("%d",&rsize);
+    printf("Enter the number of columns(<=50): ");
+    scanf("%d",&csize);
+    printf("Enter the elements of matrix:\n");
+    for(i=0;i<rsize;i++){
+        for(j=0;j<csize;j++){
+            printf("Enter the element at row %d and column %d: ",i+1,j+1);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+    printf("Your given matrix is:\n");
+    for(i=0;i<rsize;i++){
+        for(j=0;j<csize;j++){
+            printf("%-3d ",matrix[i][j]);
+        }
+        printf("\n");
+    }
+    for(i=0;i<rsize;i++){
+        smallest=matrix[i][0];
+        smallest_i=i;
+        smallest_j=i;
+        for(j=0;j<csize;j++){ 
+            if(matrix[i][j]<=smallest){
+                smallest=matrix[i][j];
+                smallest_j=j;
+            }
+        }
+        largest=matrix[i][smallest_j];
+        largest_j=smallest_j;
+        largest_i=i;
+        for(h=0;h<rsize;h++){
+            if(matrix[h][smallest_j]>=largest){
+                largest=matrix[h][smallest_j];
+                largest_i=h;
+            }
+        }
+        if(smallest_i==largest_i && smallest_j==largest_j){
+            printf("Saddle point of the matrix is %d at position [%d][%d]",matrix[smallest_i][smallest_j],smallest_i+1,smallest_j+1);
+            ch=1;
+        }
+    }
+    if(ch==0) printf("No saddle points found in the matrix.");
+}

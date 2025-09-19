@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <conio.h>
+void main(){
+    clrscr();
+    int arr1[2][3][4],i,j,h;
+    for(i=0;i<2;i++){
+        for(j=0;j<3;j++){
+            for(h=0;h<4;h++){
+                printf("Enter element at depth %d, row %d and column %d: ",i+1,j+1,h+1);
+                scanf("%d",&arr1[i][j][h]);
+            }
+        }
+    }
+    printf("Your 3D array is:\n");
+    for(i=0;i<2;i++){
+        for(j=0;j<3;j++){
+            for(h=0;h<4;h++){
+                printf("%-3d",arr1[i][j][h]);
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
+}

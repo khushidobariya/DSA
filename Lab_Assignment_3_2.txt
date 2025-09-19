@@ -1,0 +1,100 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+struct Node{
+    int data;
+    struct Node* next;
+};
+struct Node* head=NULL;
+void createLL(int n){
+    struct Node* temp=NULL;
+    struct Node* newNode=NULL;
+    int val;
+    for(int i=0;i<n;i++){
+        newNode=(struct Node*)malloc(sizeof(struct Node));
+        printf("Enter data for node %d: ",i+1);
+        scanf("%d",&val);
+        newNode->data=val;
+        newNode->next=NULL;
+        if(head==NULL)
+            head=newNode;
+        else
+            temp->next=newNode;
+        temp=newNode;
+    }
+}
+void displayLL(){
+    struct Node* temp=head;
+    printf("Linked List: ");
+    while(temp!=NULL){
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
+void insertAtStart(int val){
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    newNode->data=val;
+    newNode->next=head;
+    head=newNode;
+}
+void insertAtEnd(int val) {
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp=head;
+    newNode->data=val;
+    newNode->next=NULL;
+    if(head==NULL){
+        head=newNode;
+        return;
+    }
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=newNode;
+}
+void insertAtPos(int val,int pos){
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp=head;
+    newNode->data=val;
+    if(pos==1){
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    for(int i=1;i<pos-1 && temp!=NULL;i++)
+        temp=temp->next;
+    if (temp==NULL){
+        printf("Position out of range.\n");
+        free(newNode);
+        return;
+    }
+    newNode->next=temp->next;
+    temp->next=newNode;
+}
+int main(){
+    clrscr();
+    int n,vals,vale,pos,valp;
+    printf("Firstly create a new linked list:\n");
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    createLL(n);
+    displayLL();
+    printf("Enter the value of new node which is to be added at the start: ");
+    scanf("%d",&vals);
+    insertAtStart(vals);
+    printf("After inserting %d at start:\n",vals);
+    displayLL();
+    printf("Eneter the value of new node which is to be added at the end: ");
+    scanf("%d",&vale);
+    insertAtEnd(vale);
+    printf("After inserting %d at end:\n",vale);
+    displayLL();
+    printf("Enter the position at which you want to add a new node: ");
+    scanf("%d",&pos);
+    printf("Enter the value of new node to be added at position %d: ",pos);
+    scanf("%d",&valp);
+    insertAtPos(valp,pos);
+    printf("After inserting %d at position %d:\n",valp,pos);
+    displayLL();
+    return 0;
+}
